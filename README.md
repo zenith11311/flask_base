@@ -1,1 +1,1 @@
-# flask_simple_example
+# Flask Base for beginners
