@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- extends -->
+<html>
+    <head>
+        <title> Basic Flask Example </title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+        <meta http-equiv="Content-Script-Type" content="text/javascript">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes"> 
+        <meta name="format-detection" content="telephone=no">  
+    
+        <!-- favicon -->
+        <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}">
+        <!-- picture that show up when sharing url -->
+        <meta property="og:image" content="https://images.unsplash.com/photo-1511467370612-80c97dc727c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"> 
+
+        <!-- fontawesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+        <!-- bootstrap stylesheet -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css/bootstrap.css') }}">
+
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+        <!-- google font -->
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic|Noto+Sans+KR" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='bootstrap.js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js"></script>
+
+        <!-- custom -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='custom/common.css') }}"/>
+        <script type="text/javascript" src="{{ url_for('static', filename='custom/common.js') }}"></script>
+
+    </head>
+    <body>
+        <div class="container justify-content-right">
+            <div class="row py-1 mb-3 gray_bottom">
+                <div class="col-6">
+                    <strong style="font-size:25px; "> Carousel! </strong>
+                </div>
+                <div class="col-6 text-right ">
+                    <a href="/" class="btn btn-primary">Go Home</a>
+                    <a href="/cards" class="btn btn-primary">Go Cards</a>
+                    <button onclick="window.open('/api/test?param00=param_zero&param01=test_val', 'api/tes' ,'width=430,height=500,location=no,status=no,scrollbars=yes')" class="btn btn-primary">
+                        Call API 
+                    </button>
+                    <button onclick="alert('test_alert!');" class="btn btn-primary"> TEST ALERT! </button>
+                </div>
+            </div>
+        </div>
+        <div class="container justify-content-center">
+            <div class="row">
+                <div class="col-12 owl-carousel owl-theme owl-loaded owl-drag carousel_simple">
+                    {% for user in _users %}
+                    <div class="card user_card">
+                        <img src="{{ user['profile'] }}" class="card-img-top user_profile" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ user['uid'] }}</h5>
+                            <p class="card-text">{{ user['age'] }}</p>
+                            <a href="#" class="btn btn-primary">Some Button</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function() {
+            setCookie('port', '{{_port}}');
+        });
+
+        $('.carousel_simple').owlCarousel ({
+            items       : 4,
+            loop        : false,
+            dots        : true,
+            margin      : 10,
+            autoHeight  : true
+        });
+    </script>
+</html>
