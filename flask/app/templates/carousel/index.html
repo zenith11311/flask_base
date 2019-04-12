@@ -60,8 +60,8 @@
                         <img src="{{ user['profile'] }}" class="card-img-top user_profile" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ user['uid'] }}</h5>
-                            <p class="card-text">{{ user['age'] }}</p>
-                            <a href="#" class="btn btn-primary">Some Button</a>
+                            <p class="card-text"> Age : {{ user['age'] }}</p>
+                            <a href="{{ user['profile_src'] }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                     {% endfor %}

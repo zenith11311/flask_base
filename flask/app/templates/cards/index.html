@@ -45,6 +45,10 @@
                 <div class="col-6 text-right ">
                     <a href="/" class="btn btn-primary">Go Home</a>
                     <a href="/carousel" class="btn btn-primary">Go Carousel</a>
+                    <button onclick="window.open('/api/test?param00=param_zero&param01=test_val', 'api/tes' ,'width=430,height=500,location=no,status=no,scrollbars=yes')" class="btn btn-primary">
+                        Call API 
+                    </button>
+                    <button onclick="alert('test_alert!');" class="btn btn-primary"> TEST ALERT! </button>
                 </div>
             </div>
         </div>
@@ -56,12 +60,8 @@
                         <img src="{{ user['profile'] }}" class="card-img-top user_profile" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ user['uid'] }}</h5>
-                            <p class="card-text">{{ user['age'] }}</p>
-                            <a href="#" class="btn btn-primary">Some Button</a>
-                            <button onclick="window.open('/api/test?param00=param_zero&param01=test_val', 'api/tes' ,'width=430,height=500,location=no,status=no,scrollbars=yes')" class="btn btn-primary">
-                                Call API 
-                            </button>
-                            <button onclick="alert('test_alert!');" class="btn btn-primary"> TEST ALERT! </button>
+                            <p class="card-text"> Age : {{ user['age'] }}</p>
+                            <a href="{{ user['profile_src'] }}" class="btn btn-primary">Detail</a>
                         </div>
                     </div>
                 </div>
